@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(composer create-project *)",
+      "Bash(Read \"C:\\\\Users\\\\ASUS\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Porto-porto\\\\e018fec6-cf42-44ab-b69d-7ece6cc2b118\\\\tasks\\\\b7zranga0.output\")",
+      "Bash(php artisan *)",
+      "Bash(curl -s http://127.0.0.1:8000/api/projects)",
+      "Bash(curl -s http://127.0.0.1:8000/api/projects/fitstudio)",
+      "Bash(python -m json.tool)",
+      "PowerShell(New-Item -ItemType Directory -Force \"d:\\\\Porto\\\\porto\\\\backend\\\\public\\\\images\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"d:\\\\Porto\\\\porto\\\\backend\\\\public\\\\assets\\\\santrendcode\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"d:\\\\Porto\\\\porto\\\\backend\\\\public\\\\assets\\\\santrendcorps\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"d:\\\\Porto\\\\porto\\\\backend\\\\public\\\\assets\\\\pandu-divisi\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"d:\\\\Porto\\\\porto\\\\backend\\\\public\\\\assets\\\\mayang-mangurai\")",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

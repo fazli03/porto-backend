@@ -1,0 +1,24 @@
+# Laravel
+backend/.env
+backend/.env.backup
+backend/vendor/
+backend/node_modules/
+backend/storage/logs/*.log
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*.php
+backend/public/hot
+backend/public/storage
+
+# Database
+backend/database/*.sqlite
+backend/database/*.sqlite-journal
+
+# Build
+backend/public/build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
