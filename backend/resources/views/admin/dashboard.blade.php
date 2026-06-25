@@ -336,9 +336,15 @@
         </div>
 
         <p class="form-section-title">Link</p>
-        <div class="field">
-          <label for="f-prototype">URL Prototype <span style="opacity:.5;font-size:8px">(Figma, Webflow, dll)</span></label>
-          <input type="url" id="f-prototype" placeholder="https://www.figma.com/proto/..." />
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="f-prototype">URL Prototype — UI/UX <span style="opacity:.5;font-size:8px">(Figma, Webflow, dll)</span></label>
+            <input type="url" id="f-prototype" placeholder="https://www.figma.com/proto/..." />
+          </div>
+          <div class="field">
+            <label for="f-code">URL Code — Dev <span style="opacity:.5;font-size:8px">(GitHub, live site, dll)</span></label>
+            <input type="url" id="f-code" placeholder="https://github.com/..." />
+          </div>
         </div>
 
         <p class="form-section-title">Gambar</p>
@@ -451,6 +457,7 @@
         document.getElementById('f-problem').value=p.problemStatement||'';
         document.getElementById('f-solutions').value=p.solutions||'';
         document.getElementById('f-prototype').value=p.prototypeUrl||'';
+        document.getElementById('f-code').value=p.codeUrl||'';
         document.getElementById('f-hero').value=p.heroImage||'';
         (p.pageImages||[]).forEach(url=>addImageRow(url));
         setLoading(saveBtn,false);
@@ -493,6 +500,7 @@
         problemStatement:document.getElementById('f-problem').value.trim(),
         solutions:document.getElementById('f-solutions').value.trim(),
         prototypeUrl:document.getElementById('f-prototype').value.trim()||null,
+        codeUrl:document.getElementById('f-code').value.trim()||null,
         heroImage:document.getElementById('f-hero').value.trim(),
         pageImages:Array.from(document.querySelectorAll('#page-images-list input')).map(i=>i.value.trim()).filter(Boolean),
       };

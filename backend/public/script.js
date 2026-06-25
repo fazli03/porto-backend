@@ -56,6 +56,7 @@ const observer = new IntersectionObserver(
 );
 
 revealEls.forEach((el) => observer.observe(el));
+window._revealObserver = observer;
 
 // Also observe stats bar items directly
 document.querySelectorAll("[data-count]").forEach((el) => {

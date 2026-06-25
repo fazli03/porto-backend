@@ -18,6 +18,7 @@ class Project extends Model
         'problem_statement',
         'ps_label',
         'prototype_url',
+        'code_url',
         'solutions',
         'hero_image',
         'page_images',

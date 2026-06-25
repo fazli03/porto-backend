@@ -21,6 +21,7 @@ class ProjectResource extends JsonResource
             'problemStatement' => $this->problem_statement,
             'psLabel'          => $this->ps_label ?? 'Problem Statement',
             'prototypeUrl'     => $this->prototype_url,
+            'codeUrl'          => $this->code_url,
             'solutions'        => $this->solutions,
             'heroImage'        => $this->hero_image,
             'pageImages'       => $this->page_images ?? [],

@@ -603,6 +603,31 @@
             }
             .btn-prototype svg { flex-shrink: 0; }
 
+            .btn-code {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+                padding: 14px 20px;
+                font-family: var(--mono);
+                font-size: 10px;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: var(--bg);
+                background: var(--text-main);
+                border: 1px solid var(--text-main);
+                margin-top: 10px;
+                transition: background 0.25s, color 0.25s, border-color 0.25s;
+            }
+            .btn-code.visible { display: inline-flex; }
+            .btn-code:hover {
+                background: #333;
+                border-color: #333;
+            }
+            .btn-code svg { flex-shrink: 0; }
+
             /* ─── LIGHTBOX ZOOM ──────────────────────────── */
             .lightbox-inner { overflow: hidden; }
             #lb-img {
@@ -759,6 +784,7 @@
                         <p class="meta-label">Tools & Stack</p>
                         <div class="tools-list" id="proj-tools"></div>
                     </div>
+                    <!-- UI/UX prototype button -->
                     <a href="#" id="btn-prototype" class="btn-prototype reveal reveal-delay-3" target="_blank" rel="noopener">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -766,6 +792,13 @@
                             <line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                         View Prototype
+                    </a>
+                    <!-- Code / live site button -->
+                    <a href="#" id="btn-code" class="btn-code reveal reveal-delay-3" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        View Code
                     </a>
                 </aside>
 
@@ -1120,15 +1153,24 @@
             }
 
             // ─── TOOL ICONS ───────────────────────────────────────────────────────────
-            const TOOL_ICONS = {
-                'Figma': `<svg class="tool-icon" width="11" height="16" viewBox="0 0 11 16" fill="none"><path d="M2.75 16C4.27 16 5.5 14.77 5.5 13.25V10.5H2.75a2.75 2.75 0 0 0 0 5.5z" fill="#0ACF83"/><path d="M0 7.75A2.75 2.75 0 0 1 2.75 5H5.5v5.5H2.75A2.75 2.75 0 0 1 0 7.75z" fill="#A259FF"/><path d="M0 2.75A2.75 2.75 0 0 1 2.75 0H5.5v5.5H2.75A2.75 2.75 0 0 1 0 2.75z" fill="#F24E1E"/><path d="M5.5 0h2.75a2.75 2.75 0 0 1 0 5.5H5.5V0z" fill="#FF7262"/><path d="M11 7.75a2.75 2.75 0 1 1-5.5 0 2.75 2.75 0 0 1 5.5 0z" fill="#1ABCFE"/></svg>`,
-                'Webflow': `<svg class="tool-icon" width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M11.7 0c-.9 2.5-1.9 5-2.9 6.7V0H6.3L4.8 7C4 4.7 3.4 2.4 2.8 0H0l2.9 10h2.8L7 3.5 8.4 10h2.8L16 0h-4.3z" fill="#146EF5"/></svg>`,
-                'default': `<svg class="tool-icon" width="11" height="11" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 4v2l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>`
+            const TOOL_SLUGS = {
+                'Figma':    'figma',
+                'Webflow':  'webflow',
+                'Laravel':  'laravel',
+                'PHP':      'php',
+                'Filament': 'filament',
+                'Notion':   'notion',
+                'Illustrator': 'adobeillustrator',
+                'Photoshop':   'adobephotoshop',
+                'After Effects': 'adobeaftereffects',
+                'Sketch':   'sketch',
+                'Framer':   'framer',
             };
 
             function getToolIcon(name) {
-                const key = Object.keys(TOOL_ICONS).find(k => k !== 'default' && name.toLowerCase().includes(k.toLowerCase()));
-                return TOOL_ICONS[key] || '';
+                const key = Object.keys(TOOL_SLUGS).find(k => name.toLowerCase().includes(k.toLowerCase()));
+                if (!key) return '';
+                return `<img class="tool-icon" src="https://cdn.simpleicons.org/${TOOL_SLUGS[key]}" width="14" height="14" alt="${key}" />`;
             }
 
             // ─── LIGHTBOX ─────────────────────────────────────────────────────────────
@@ -1331,11 +1373,18 @@
                     toolsEl.innerHTML = '<span class="meta-value">—</span>';
                 }
 
-                // Prototype button
+                // Prototype button (UI/UX)
                 const btnProto = document.getElementById("btn-prototype");
                 if (project.prototypeUrl) {
                     btnProto.href = project.prototypeUrl;
                     btnProto.classList.add("visible");
+                }
+
+                // Code button (Dev)
+                const btnCode = document.getElementById("btn-code");
+                if (project.codeUrl) {
+                    btnCode.href = project.codeUrl;
+                    btnCode.classList.add("visible");
                 }
 
                 // Carousel
