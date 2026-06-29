@@ -1,0 +1,5 @@
+run = "cd backend && bash start.sh"
+language = "php"
+
+[nix]
+channel = "stable-24_05"

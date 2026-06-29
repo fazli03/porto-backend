@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# Create SQLite file if using SQLite
+if [ "${DB_CONNECTION:-sqlite}" = "sqlite" ]; then
+  DB_PATH="${DB_DATABASE:-database/database.sqlite}"
+  mkdir -p "$(dirname "$DB_PATH")"
+  touch "$DB_PATH"
+fi
+
 # Run migrations
 php artisan migrate --force
 
@@ -16,4 +23,4 @@ php artisan route:cache
 php artisan view:cache
 
 # Start server
-php -S 0.0.0.0:${PORT:-10000} -t public
+php -S 0.0.0.0:${PORT:-8000} -t public
