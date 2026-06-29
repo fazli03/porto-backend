@@ -1,13 +1,6 @@
 #!/bin/bash
 set -e
 
-# Use DB_DATABASE env var if set (Railway Volume), otherwise fallback to local path
-DB_PATH="${DB_DATABASE:-database/database.sqlite}"
-
-# Ensure parent directory and file exist
-mkdir -p "$(dirname "$DB_PATH")"
-touch "$DB_PATH"
-
 # Run migrations
 php artisan migrate --force
 
@@ -23,4 +16,4 @@ php artisan route:cache
 php artisan view:cache
 
 # Start server
-php -S 0.0.0.0:${PORT:-8000} -t public
+php -S 0.0.0.0:${PORT:-10000} -t public
