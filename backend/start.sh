@@ -1,19 +1,23 @@
 #!/bin/bash
 set -e
 
-# Pastikan file SQLite ada
-touch database/database.sqlite
+# Use DB_DATABASE env var if set (Railway Volume), otherwise fallback to local path
+DB_PATH="${DB_DATABASE:-database/database.sqlite}"
 
-# Jalankan migration
+# Ensure parent directory and file exist
+mkdir -p "$(dirname "$DB_PATH")"
+touch "$DB_PATH"
+
+# Run migrations
 php artisan migrate --force
 
-# Seed jika tabel projects kosong
+# Seed if projects table is empty
 COUNT=$(php artisan tinker --execute="echo App\Models\Project::count();" 2>/dev/null | tail -1)
 if [ "$COUNT" = "0" ] || [ -z "$COUNT" ]; then
   php artisan db:seed --class=ProjectSeeder --force
 fi
 
-# Cache untuk production
+# Cache for production
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache

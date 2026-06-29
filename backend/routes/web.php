@@ -3,9 +3,6 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
-// Portfolio homepage redirect
-Route::get('/', fn() => redirect('/home.html'));
-
 // Admin — public routes
 Route::get('/admin/login',  [AdminController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.post');

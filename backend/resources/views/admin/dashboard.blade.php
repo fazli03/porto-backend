@@ -7,10 +7,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css" />
   <style>
-    body { cursor: auto; }
-    #cursor, #cursor-ring { display: none; }
+    :root {
+      --bg: #fffbf1;
+      --text-main: #0a0a0a;
+      --accent: #ffc94d;
+      --border: #e6e1d6;
+      --surface-1: #f4efe5;
+      --surface-2: #ebe6dc;
+      --text-muted: #666666;
+      --mono: "DM Mono", monospace;
+      --sans: "Space Grotesk", sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text-main); font-family: var(--sans); cursor: auto; }
 
     .admin-nav {
       position: sticky; top: 0; z-index: 100;
@@ -264,7 +274,7 @@
   <nav class="admin-nav">
     <span class="admin-nav-logo">Portfolio — Admin</span>
     <div class="admin-nav-links">
-      <a href="/home.html" class="nav-link-portfolio">&#8592; Portfolio</a>
+      <a href="http://localhost:5173" class="nav-link-portfolio" target="_blank">&#8592; Portfolio</a>
       <a href="{{ route('admin.logout') }}" class="nav-link-logout">Logout</a>
     </div>
   </nav>
